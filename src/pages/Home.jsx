@@ -1,6 +1,7 @@
 import React, {useDebugValue, useEffect, useState} from 'react';
 import "./styles.css";
 import facade from "../facade.js";
+import {part1, part2} from "../settings.js";
 
 function Home(props) {
 
@@ -14,8 +15,8 @@ function Home(props) {
 
     const fetchWeather = async(e) => {
         e.preventDefault()
-        const apiKey = "a697710286cb6916321bd38b4ff987df"
-        await fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&apiKey=' + apiKey)
+        const info = part1 + part2
+        await fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&apiKey=' + info)
             .then((response) => response.json())
             .then((data) => setWeather(data))
             .catch(e => console.log(e))
